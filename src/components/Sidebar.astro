@@ -1,0 +1,49 @@
+---
+const navItems = [
+  { id: 'home', label: '01 · HOME' },
+  { id: 'about', label: '02 · WHO AM I' },
+  { id: 'numbers', label: '03 · NUMBERS' },
+  { id: 'work', label: '04 · WORK' },
+  { id: 'process', label: '05 · PROCESS' },
+  { id: 'contact', label: '06 · CONTACT' },
+];
+---
+
+<nav
+  id="sidebar"
+  aria-label="Section navigation"
+  class="fixed left-0 top-0 bottom-0 w-20 z-100 flex flex-col items-center justify-center py-10 border-r border-accent/8 hidden lg:flex"
+>
+  <a href="#home" class="absolute top-8 font-heading text-[22px] text-accent tracking-wide no-underline" aria-label="Home">
+    DP
+  </a>
+
+  <ul class="sidebar-nav flex flex-col gap-1.5 list-none">
+    {navItems.map((item, i) => (
+      <li>
+        <a
+          href={`#${item.id}`}
+          class:list={[
+            'flex flex-col items-center no-underline text-text-dim font-body text-[9px] font-medium tracking-[0.12em] uppercase py-2.5 px-2 rounded transition-colors',
+            '[writing-mode:vertical-rl] [text-orientation:mixed] rotate-180',
+            'hover:text-accent',
+            i === 0 && 'active text-accent',
+          ]}
+          data-section={item.id}
+        >
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <div class="absolute bottom-8 flex flex-col items-center gap-4">
+    <div class="w-px h-15 bg-gradient-to-b from-transparent to-accent/50"></div>
+    <a
+      href="mailto:dhruvsprajapati@gmail.com"
+      class="[writing-mode:vertical-rl] text-[9px] text-text-dim tracking-[0.1em] no-underline transition-colors hover:text-accent rotate-180"
+    >
+      dhruvsprajapati@gmail.com
+    </a>
+  </div>
+</nav>

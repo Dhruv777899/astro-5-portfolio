@@ -1,0 +1,50 @@
+---
+const links = [
+  { icon: '✉', label: 'dhruvsprajapati@gmail.com', href: 'mailto:dhruvsprajapati@gmail.com' },
+  { icon: '🐙', label: 'Github', href: 'https://github.com/Dhruv777899', external: true },
+  { icon: '💼', label: 'LinkedIn', href: 'https://www.linkedin.com/in/dhruv-prajapati-5960b8144/', external: true },
+];
+---
+
+<section id="contact" class="relative overflow-hidden px-20 py-30 bg-base-alt max-lg:px-10 max-sm:px-6">
+  <div class="orb w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(232,98,42,0.14)_0%,transparent_70%)] -top-25 -left-25"></div>
+
+  <span class="shape ring" style="top:10%;right:5%;animation-delay:1.1s"></span>
+  <span class="shape" style="top:55%;left:3%;animation-delay:0.6s">×</span>
+  <span class="shape circle" style="bottom:10%;right:10%;animation-delay:2.2s"></span>
+  <span class="shape dash" style="bottom:20%;left:20%;animation-delay:0.8s"></span>
+
+  <div class="grid grid-cols-2 gap-20 relative z-2 items-start max-lg:grid-cols-1 max-lg:gap-15">
+    <div>
+      <h2 class="font-heading text-[clamp(60px,7vw,100px)] leading-[0.9] text-text mb-1 reveal">
+        LET'S BUILD<br />SOMETHING
+      </h2>
+      <p class="font-serif italic text-[28px] text-accent mb-7 mt-1 reveal reveal-delay-1">Worth Talking About.</p>
+      <p class="text-[15px] text-text-dim leading-[1.8] max-w-[420px] mb-10 reveal reveal-delay-2">
+        I'm available for freelance projects, consulting, and full-time opportunities. If you have a problem worth solving, I'd love to hear about it.
+      </p>
+      <div class="flex flex-col gap-4 reveal reveal-delay-3">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            class="flex items-center gap-3.5 text-sm text-text-muted no-underline transition-all hover:text-accent hover:gap-4.5"
+            {...(link.external ? { target: '_blank', rel: 'noopener' } : {})}
+          >
+            <span class="text-base w-5 text-center">{link.icon}</span>
+            <span>{link.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <a
+        href="mailto:dhruvsprajapati@gmail.com"
+        class="btn-primary inline-block text-center bg-accent text-base py-4 px-10 font-body text-[13px] font-semibold tracking-[0.1em] uppercase no-underline cursor-none transition-all hover:bg-accent-light hover:shadow-[0_0_30px_rgba(232,98,42,0.4)] hover:-translate-y-0.5"
+      >
+        Send Me an Email →
+      </a>
+    </div>
+  </div>
+
+  <div class="section-num">06</div>
+</section>

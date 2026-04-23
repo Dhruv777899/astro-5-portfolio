@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* ─── THEME ───────────────────────────────────────────────────── */
+@theme {
+  --color-base: #1a0e08;
+  --color-base-alt: #1d1008;
+  --color-surface: #2c1810;
+  --color-surface-alt: #231208;
+  --color-footer: #140b05;
+  --color-accent: #e8622a;
+  --color-accent-light: #f0a040;
+  --color-text: #f5e6d8;
+  --color-text-muted: #c8b0a0;
+  --color-text-dim: #a08070;
+  --color-text-faint: #604840;
+
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+/* ─── RESET & BASE ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--color-base);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* ─── CUSTOM CURSOR ───────────────────────────────────────────── */
+#cursor-dot {
+  position: fixed; width: 8px; height: 8px;
+  background: var(--color-accent); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s;
+}
+#cursor-ring {
+  position: fixed; width: 32px; height: 32px;
+  border: 1.5px solid rgba(232,98,42,0.6); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.2s, height 0.2s, opacity 0.2s;
+}
+body:hover #cursor-ring { opacity: 1; }
+
+/* ─── NOISE TEXTURE OVERLAY ───────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── BACKGROUND ORBS ─────────────────────────────────────────── */
+.orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); pointer-events: none; z-index: 0;
+}
+
+/* ─── FLOATING SHAPES ─────────────────────────────────────────── */
+.shape {
+  position: absolute; pointer-events: none; z-index: 1;
+  color: rgba(232,98,42,0.25); font-size: 14px;
+  animation: float1 8s ease-in-out infinite;
+}
+.shape:nth-child(odd) { animation-name: float2; animation-duration: 10s; }
+.shape.circle {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid rgba(232,98,42,0.3);
+  font-size: 0;
+}
+.shape.ring {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(240,160,64,0.2);
+  font-size: 0;
+}
+.shape.dash {
+  width: 20px; height: 1.5px;
+  background: rgba(232,98,42,0.3); font-size: 0;
+}
+@keyframes float1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(5deg); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(-4deg); }
+  66% { transform: translateY(6px) rotate(3deg); }
+}
+
+/* ─── SECTION NUMBER ──────────────────────────────────────────── */
+.section-num {
+  position: absolute; top: 40px; right: 60px;
+  font-family: var(--font-heading);
+  font-size: 120px; color: var(--color-text);
+  opacity: 0.04; line-height: 1; pointer-events: none;
+  letter-spacing: -2px; z-index: 0;
+}
+
+/* ─── HERO ────────────────────────────────────────────────────── */
+.hero-name span:last-child {
+  -webkit-text-stroke: 2px rgba(232,98,42,0.6);
+  color: transparent;
+}
+
+/* ─── BUTTONS ─────────────────────────────────────────────────── */
+.btn-primary {
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+/* ─── CARD BOTTOM LINE ────────────────────────────────────────── */
+.card-line::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(to right, var(--color-accent), var(--color-accent-light));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.card-line:hover::after { transform: scaleX(1); }
+
+/* ─── FILTER BUTTONS ──────────────────────────────────────────── */
+.filter-btn::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+  height: 1px; background: var(--color-accent);
+  transition: left 0.3s, right 0.3s;
+}
+.filter-btn.active::after { left: 20px; right: 20px; }
+
+/* ─── HIDDEN PROJECT CARDS ────────────────────────────────────── */
+.project-card.hidden {
+  opacity: 0; pointer-events: none; height: 0;
+  padding: 0; border: 0; overflow: hidden; margin: 0;
+}
+
+/* ─── PROCESS BACKGROUND NUMBER ───────────────────────────────── */
+.process-bg-num {
+  position: absolute; bottom: -10px; right: 10px;
+  font-family: var(--font-heading);
+  font-size: 100px; color: var(--color-text); opacity: 0.03;
+  line-height: 1; pointer-events: none;
+}
+
+/* ─── SCROLL INDICATOR ────────────────────────────────────────── */
+@keyframes scrollBounce {
+  0%, 100% { transform: scaleY(1) translateY(0); opacity: 1; }
+  50% { transform: scaleY(0.6) translateY(8px); opacity: 0.5; }
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .section-num { font-size: 90px; }
+}
+@media (max-width: 640px) {
+  .section-num { font-size: 70px; }
+}

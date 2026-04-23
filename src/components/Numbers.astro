@@ -1,0 +1,33 @@
+---
+const numbers = [
+  { num: '3+', label: 'Years of Professional<br>Experience', delay: 1 },
+  { num: '20+', label: 'Client Projects<br>Delivered', delay: 2 },
+  { num: '100ms', label: 'Avg. LCP Improvement<br>Achieved', delay: 3 },
+  { num: '6', label: 'Industries<br>Served', delay: 4 },
+];
+---
+
+<section id="numbers" class="relative overflow-hidden px-20 py-30 bg-base text-center max-lg:px-10 max-sm:px-6">
+  <div class="orb w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(232,98,42,0.15)_0%,transparent_70%)] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+  <span class="shape" style="top:8%;left:5%;animation-delay:0.6s">+</span>
+  <span class="shape circle" style="top:15%;right:8%;animation-delay:1.2s"></span>
+  <span class="shape dash" style="bottom:15%;left:15%;animation-delay:2.1s"></span>
+  <span class="shape" style="bottom:8%;right:5%;animation-delay:0.3s">×</span>
+
+  <div class="mb-15 text-center reveal">
+    <h2 class="font-serif italic text-5xl font-normal text-text">The Numbers Speak<br />for Themselves</h2>
+    <p class="text-text-dim text-[15px] mt-2">Three years of shipping, debugging, optimizing, and never settling.</p>
+  </div>
+
+  <div class="grid grid-cols-4 gap-6 mt-15 relative z-2 max-lg:grid-cols-2 max-sm:grid-cols-2">
+    {numbers.map((item) => (
+      <div class={`card-line bg-surface border border-accent/12 py-12 px-6 relative overflow-hidden transition-all hover:border-accent/40 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(232,98,42,0.12)] reveal reveal-delay-${item.delay}`}>
+        <div class="font-heading text-[80px] text-accent leading-none mb-2">{item.num}</div>
+        <div class="text-[13px] text-text-dim leading-snug tracking-[0.05em]" set:html={item.label} />
+      </div>
+    ))}
+  </div>
+
+  <div class="section-num">03</div>
+</section>

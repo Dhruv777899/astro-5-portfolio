@@ -1,0 +1,52 @@
+---
+const tags = ['Problem Solver', 'Design-Minded', 'Full-Stack', 'Accessibility', 'Performance', 'Systems Thinker'];
+---
+
+<section id="about" class="relative overflow-hidden px-20 py-30 bg-base-alt max-lg:px-10 max-sm:px-6">
+  <!-- Shapes -->
+  <span class="shape circle" style="top:10%;right:5%;animation-delay:0.7s"></span>
+  <span class="shape" style="top:50%;left:2%;animation-delay:1.3s">›</span>
+  <span class="shape dash" style="bottom:20%;right:10%;animation-delay:2s"></span>
+  <span class="shape ring" style="bottom:10%;left:10%;animation-delay:0.4s"></span>
+
+  <div class="mb-15 reveal">
+    <h2 class="font-heading text-[56px] text-text tracking-wide">WHO AM I</h2>
+    <p class="text-text-dim text-[15px] mt-2">Developer. Designer. Problem-untangler.</p>
+  </div>
+
+  <div class="grid grid-cols-[320px_1fr] gap-20 relative z-2 max-lg:grid-cols-1">
+    <!-- Portrait Card -->
+    <div class="card-line bg-surface-alt border border-accent/15 relative overflow-hidden min-h-[440px] flex items-center justify-center transition-colors hover:border-accent/40 reveal max-lg:min-h-[280px]">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(232,98,42,0.15)_0%,transparent_70%)]"></div>
+      <div class="font-heading text-[130px] text-accent/12 leading-none relative z-1 select-none">DP</div>
+      <div class="absolute bottom-5 right-5 bg-accent text-base text-[10px] font-bold tracking-[0.15em] uppercase py-2 px-3.5 leading-relaxed">
+        3+ YEARS<br />IN THE CRAFT
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="py-2">
+      <p class="font-serif italic text-[22px] text-accent-light leading-snug mb-8 pl-6 border-l-2 border-accent-light/40 reveal reveal-delay-1">
+        "I build things people use — then I ask why they use them."
+      </p>
+      <p class="text-[15px] leading-[1.85] text-text-muted mb-5 reveal reveal-delay-2">
+        Hey, I'm Dhruv. I'm a full-stack web developer based in Oshawa, Ontario, with a BE in Computer Science and a diploma in Interactive Media Design. That dual background isn't a coincidence — I've always believed that code and craft belong together.
+      </p>
+      <p class="text-[15px] leading-[1.85] text-text-muted mb-5 reveal reveal-delay-2">
+        At Brainbox Labs, I work on complex client projects spanning healthcare, government, insurance, and media. My work isn't just about shipping features — it's about understanding the underlying problem and engineering something that actually solves it. Whether that's untangling N+1 database queries, rebuilding a CDN pipeline, or rethinking a user flow from scratch.
+      </p>
+      <p class="text-[15px] leading-[1.85] text-text-muted mb-5 reveal reveal-delay-3">
+        Outside the agency, I build side projects, run a home lab server, experiment with automation workflows, and slowly pull my career toward UX/UI design. I'm drawn to the intersection of logic and aesthetics — where a system works beautifully and looks beautiful working.
+      </p>
+      <div class="flex flex-wrap gap-2.5 mt-8 reveal reveal-delay-4">
+        {tags.map((tag) => (
+          <span class="border border-accent/30 text-accent text-[11px] font-medium tracking-[0.1em] uppercase py-1.5 px-4 transition-colors hover:bg-accent/15">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="section-num">02</div>
+</section>

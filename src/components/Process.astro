@@ -1,0 +1,35 @@
+---
+const steps = [
+  { num: 'STEP 01', icon: '🔍', title: 'Diagnose First', desc: "I start by understanding the actual problem — not the stated one. Most briefs describe a symptom. I look for the root cause before writing a single line of code.", bgNum: '01' },
+  { num: 'STEP 02', icon: '🗺', title: 'Map the Constraints', desc: "Deadline, budget, legacy code, third-party dependencies — I map every constraint before proposing a solution. The best solution is the one that survives real-world conditions.", bgNum: '02' },
+  { num: 'STEP 03', icon: '🔨', title: 'Build Iteratively', desc: "I ship working increments, not promises. Each commit should be usable. Each PR should be reviewable. I prefer a functional 80% on day one over a perfect spec that never ships.", bgNum: '03' },
+  { num: 'STEP 04', icon: '✨', title: 'Care About the Last 10%', desc: "The difference between good and memorable is the last 10%. The hover state. The loading fallback. The accessibility label. That's where I spend the extra hour — because that's what people actually feel.", bgNum: '04' },
+];
+---
+
+<section id="process" class="relative overflow-hidden px-20 py-30 bg-base max-lg:px-10 max-sm:px-6">
+  <div class="orb w-[350px] h-[350px] bg-[radial-gradient(circle,rgba(240,160,64,0.1)_0%,transparent_70%)] -bottom-20 -right-20"></div>
+
+  <span class="shape circle" style="top:8%;left:5%;animation-delay:0.9s"></span>
+  <span class="shape" style="top:40%;right:4%;animation-delay:1.6s">+</span>
+  <span class="shape dash" style="bottom:20%;left:8%;animation-delay:0.4s"></span>
+
+  <div class="mb-15 reveal">
+    <h2 class="font-heading text-[56px] text-text tracking-wide">HOW I WORK</h2>
+    <p class="text-text-dim text-[15px] mt-2">I think like a designer, build like an engineer.</p>
+  </div>
+
+  <div class="grid grid-cols-4 gap-6 relative z-2 max-lg:grid-cols-2 max-sm:grid-cols-1">
+    {steps.map((step, i) => (
+      <div class={`card-line bg-surface-alt border border-accent/10 py-9 px-7 relative overflow-hidden transition-all hover:border-accent/40 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(232,98,42,0.1)] reveal reveal-delay-${i + 1}`}>
+        <div class="font-heading text-[13px] tracking-[0.2em] text-accent mb-4">{step.num}</div>
+        <span class="text-[28px] mb-4 block">{step.icon}</span>
+        <h3 class="font-heading text-2xl text-text tracking-tight mb-4">{step.title}</h3>
+        <p class="text-[13px] text-text-dim leading-[1.75]">{step.desc}</p>
+        <span class="process-bg-num">{step.bgNum}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="section-num">05</div>
+</section>
